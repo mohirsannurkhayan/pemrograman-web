@@ -76,7 +76,7 @@ Pemrograman Web/
 | Bootstrap | Framework CSS responsif |
 | TCPDF | Library PHP untuk generate file PDF |
 | phpMyAdmin | Manajemen database via GUI |
-| XAMPP / Laragon | Local development server |
+| XAMPP | Local development server |
 | Visual Studio Code | Code editor |
 
 ---
