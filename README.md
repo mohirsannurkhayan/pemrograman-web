@@ -164,15 +164,23 @@ Nama database: **`crude_php`**
 
 ### Halaman Login
 Form login dengan validasi username dan password untuk mengamankan akses sistem.
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/b2a933a3-0ab5-4444-8a8b-25310bd2734b" />
+
 
 ### Halaman Data Mahasiswa
 Tabel daftar mahasiswa lengkap dengan kolom: No, NIM, Nama Lengkap, Alamat, Jurusan, dan Aksi (Ubah/Hapus).
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/45af5a3a-4774-42ae-815b-68db2aaa64e5" />
+
 
 ### Form Tambah / Edit Data
 Modal popup untuk menambah atau mengubah data mahasiswa dengan field: NIM, Nama Lengkap, Alamat, dan Prodi.
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/d16b7ccd-5730-4a05-b9da-bab107a60525" />
+
 
 ### Cetak PDF
 Fitur untuk mencetak seluruh data mahasiswa dalam format PDF menggunakan library TCPDF.
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e9b42d06-1ddc-47b0-b8fe-ddede85c2be6" />
+
 
 ---
 
