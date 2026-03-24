@@ -131,7 +131,7 @@ http://localhost/Pemrograman%20Web/login.php
 
 | Username | Password |
 |----------|----------|
-| admin    | admin123 |
+| admin    | 12345 |
 
 ---
 
