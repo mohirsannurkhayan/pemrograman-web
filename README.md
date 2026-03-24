@@ -69,7 +69,7 @@ pemrograman-web/
 | HTML5 & CSS3 | Struktur dan tampilan halaman |
 | Bootstrap | Framework CSS responsif |
 | phpMyAdmin | Manajemen database via GUI |
-| XAMPP / Laragon | Local development server |
+| XAMPP | Local development server |
 
 ---
 
