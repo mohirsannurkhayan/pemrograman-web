@@ -180,11 +180,11 @@ Fitur untuk mencetak seluruh data mahasiswa dalam format PDF menggunakan library
 
 | | |
 |--|--|
-| **Nama** | [Nama Lengkap Kamu] |
-| **NIM** | [NIM Kamu] |
+| **Nama** | Moh Irsan Nur Khayan |
+| **NIM** | G.211.23.0026 |
 | **Mata Kuliah** | Pemrograman Web |
 | **Universitas** | Universitas Semarang |
-| **Tahun** | 2024/2025 |
+| **Tahun** | 2024 |
 
 ---
 
