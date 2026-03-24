@@ -20,42 +20,48 @@ Aplikasi web berbasis PHP dan MySQL untuk mengelola data mahasiswa Universitas S
 
 - 🔐 **Login & Autentikasi** — Sistem login dengan session untuk keamanan akses
 - 📋 **Daftar Data Mahasiswa** — Menampilkan seluruh data mahasiswa dalam bentuk tabel
-- ➕ **Tambah Data** — Form untuk menambahkan data mahasiswa baru
+- ➕ **Tambah Data** — Form modal untuk menambahkan data mahasiswa baru
 - ✏️ **Ubah Data** — Modal form untuk mengedit data mahasiswa yang sudah ada
 - 🗑️ **Hapus Data** — Menghapus data mahasiswa dari database
-- 🖨️ **Cetak Data** — Fitur cetak daftar mahasiswa
-
----
-
-## 🖥️ Tampilan Aplikasi
-
-### Halaman Login
-Form login dengan validasi username dan password untuk mengamankan akses sistem.
-
-### Halaman Data Mahasiswa
-Tabel daftar mahasiswa lengkap dengan kolom: No, NIM, Nama Lengkap, Alamat, Jurusan, dan Aksi (Ubah/Hapus).
-
-### Form Edit Data (Modal)
-Modal popup untuk mengubah data mahasiswa dengan field: NIM, Nama Lengkap, Alamat, dan Prodi.
+- 🖨️ **Cetak PDF** — Fitur cetak daftar mahasiswa dalam format PDF menggunakan TCPDF
 
 ---
 
 ## 🗂️ Struktur Direktori
 
 ```
-pemrograman-web/
-├── index.php           # Halaman utama (daftar mahasiswa)
-├── login.php           # Halaman login
-├── logout.php          # Proses logout
-├── tambah.php          # Proses tambah data
-├── ubah.php            # Proses ubah data
-├── hapus.php           # Proses hapus data
-├── cetak.php           # Halaman cetak data
-├── koneksi.php         # Konfigurasi koneksi database
-├── css/
-│   └── style.css       # Custom styling
-└── assets/
-    └── logo-unimus.png # Logo universitas
+Pemrograman Web/
+├── .vscode/                  # Konfigurasi Visual Studio Code
+├── image/                    # Folder gambar/aset
+│   ├── gambar-usm.jpeg       # Gambar Universitas Semarang
+│   ├── tombol-logout.png     # Ikon tombol logout
+│   ├── tombol-logout1.png    # Ikon tombol logout (alternatif)
+│   └── usm.png               # Logo Universitas Semarang
+├── TCPDF-main/               # Library TCPDF untuk generate PDF
+│   ├── config/
+│   ├── examples/
+│   ├── fonts/
+│   ├── include/
+│   ├── tools/
+│   ├── CHANGELOG.TXT
+│   ├── composer.json
+│   ├── LICENSE.TXT
+│   ├── README.md
+│   ├── tcpdf_autoconfig.php
+│   ├── tcpdf_barcodes_1d.php
+│   ├── tcpdf_barcodes_2d.php
+│   ├── tcpdf_import.php
+│   ├── tcpdf_parser.php
+│   ├── tcpdf.php
+│   └── VERSION
+├── aksi_crud.php             # Proses operasi CRUD (tambah, ubah, hapus)
+├── cetak_pdf.php             # Generate dan cetak data mahasiswa ke PDF
+├── index.php                 # Halaman utama (daftar data mahasiswa)
+├── koneksi.php               # Konfigurasi koneksi database
+├── login.php                 # Halaman form login
+├── login_exe.php             # Proses autentikasi login
+├── logout.php                # Proses logout dan hapus session
+└── README.md                 # Dokumentasi proyek
 ```
 
 ---
@@ -65,11 +71,13 @@ pemrograman-web/
 | Teknologi | Keterangan |
 |-----------|------------|
 | PHP | Backend / server-side scripting |
-| MySQL | Database management |
+| MariaDB / MySQL | Database management |
 | HTML5 & CSS3 | Struktur dan tampilan halaman |
 | Bootstrap | Framework CSS responsif |
+| TCPDF | Library PHP untuk generate file PDF |
 | phpMyAdmin | Manajemen database via GUI |
-| XAMPP | Local development server |
+| XAMPP / Laragon | Local development server |
+| Visual Studio Code | Code editor |
 
 ---
 
@@ -81,38 +89,41 @@ Pastikan sudah menginstall salah satu dari:
 
 ### Langkah Instalasi
 
-1. **Clone repositori ini**
-   ```bash
-   git clone https://github.com/username/pemrograman-web.git
-   ```
+**1. Clone repositori ini**
+```bash
+git clone https://github.com/mohirsannurkhayan/pemrograman-web.git
+```
 
-2. **Pindahkan ke folder htdocs**
-   ```
-   Salin folder ke: C:/xampp/htdocs/pemrograman web/
-   ```
+**2. Pindahkan ke folder htdocs**
+```
+Salin folder ke: C:/xampp/htdocs/Pemrograman Web/
+```
 
-3. **Import database**
-   - Buka `http://localhost/phpmyadmin`
-   - Buat database baru dengan nama `db_mahasiswa`
-   - Import file SQL yang tersedia di folder `database/`
+**3. Buat database**
+- Buka `http://localhost/phpmyadmin`
+- Buat database baru dengan nama `crude_php`
+- Import file SQL: klik tab **Import** → pilih file `crude_php.sql`
 
-4. **Konfigurasi koneksi database**
+**4. Konfigurasi koneksi database**
 
-   Buka file `koneksi.php` dan sesuaikan:
-   ```php
-   <?php
-   $host     = "localhost";
-   $user     = "root";
-   $password = "";
-   $database = "db_mahasiswa";
-   
-   $koneksi = mysqli_connect($host, $user, $password, $database);
-   ?>
-   ```
+Buka file `koneksi.php` dan sesuaikan:
+```php
+<?php
+$host     = "localhost";
+$user     = "root";
+$password = "";
+$database = "crude_php";
 
-5. **Jalankan aplikasi**
+$koneksi = mysqli_connect($host, $user, $password, $database);
+?>
+```
 
-   Buka browser dan akses: `http://localhost/pemrograman%20web/login.php`
+**5. Jalankan aplikasi**
+
+Buka browser dan akses:
+```
+http://localhost/Pemrograman%20Web/login.php
+```
 
 ---
 
@@ -126,23 +137,42 @@ Pastikan sudah menginstall salah satu dari:
 
 ## 📊 Struktur Database
 
-### Tabel `mahasiswa`
+Nama database: **`crude_php`**
+
+### Tabel `tbl_mhs`
 
 | Kolom | Tipe | Keterangan |
 |-------|------|------------|
-| id | INT (PK, AUTO_INCREMENT) | ID unik mahasiswa |
-| nim | VARCHAR(20) | Nomor Induk Mahasiswa |
-| nama | VARCHAR(100) | Nama lengkap mahasiswa |
-| alamat | TEXT | Alamat mahasiswa |
-| jurusan | VARCHAR(50) | Program studi |
+| id_mhs | int(11) — PK, AUTO_INCREMENT | ID unik mahasiswa |
+| nim | varchar(20) | Nomor Induk Mahasiswa |
+| nama | varchar(100) | Nama lengkap mahasiswa |
+| alamat | text | Alamat mahasiswa |
+| prodi | varchar(100) | Program studi |
 
-### Tabel `users`
+### Tabel `tbl_pengguna`
 
 | Kolom | Tipe | Keterangan |
 |-------|------|------------|
-| id | INT (PK, AUTO_INCREMENT) | ID user |
-| username | VARCHAR(50) | Username login |
-| password | VARCHAR(255) | Password (md5/hash) |
+| id | int(11) — PK, AUTO_INCREMENT | ID unik pengguna |
+| username | varchar(50) | Username untuk login |
+| password | varchar(255) | Password (terenkripsi) |
+| nama_lengkap | varchar(100) | Nama lengkap pengguna |
+
+---
+
+## 🖥️ Tampilan Aplikasi
+
+### Halaman Login
+Form login dengan validasi username dan password untuk mengamankan akses sistem.
+
+### Halaman Data Mahasiswa
+Tabel daftar mahasiswa lengkap dengan kolom: No, NIM, Nama Lengkap, Alamat, Jurusan, dan Aksi (Ubah/Hapus).
+
+### Form Tambah / Edit Data
+Modal popup untuk menambah atau mengubah data mahasiswa dengan field: NIM, Nama Lengkap, Alamat, dan Prodi.
+
+### Cetak PDF
+Fitur untuk mencetak seluruh data mahasiswa dalam format PDF menggunakan library TCPDF.
 
 ---
 
