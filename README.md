@@ -6,13 +6,13 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
-> Tugas Akhir Mata Kuliah Pemrograman Web — Sistem manajemen data mahasiswa berbasis web dengan fitur autentikasi dan CRUD lengkap.
+> Tugas Akhir Mata Kuliah Pemrograman Web — Sistem manajemen pendataan mahasiswa berbasis web dengan fitur autentikasi dan CRUD lengkap.
 
 ---
 
 ## 📋 Deskripsi Proyek
 
-Aplikasi web berbasis PHP dan MySQL untuk mengelola data mahasiswa Universitas Semarang. Sistem ini memungkinkan admin untuk melakukan operasi CRUD (Create, Read, Update, Delete) terhadap data mahasiswa secara efisien melalui antarmuka yang sederhana dan responsif.
+Aplikasi web berbasis PHP dan MySQL untuk mengelola data mahasiswa. Sistem ini memungkinkan admin untuk melakukan operasi CRUD (Create, Read, Update, Delete) terhadap data mahasiswa secara efisien melalui antarmuka yang sederhana dan responsif.
 
 ---
 
