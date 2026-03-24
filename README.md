@@ -192,7 +192,7 @@ Fitur untuk mencetak seluruh data mahasiswa dalam format PDF menggunakan library
 | **NIM** | G.211.23.0026 |
 | **Mata Kuliah** | Pemrograman Web |
 | **Universitas** | Universitas Semarang |
-| **Tahun** | 2024 |
+| **Semester** | 2 |
 
 ---
 
